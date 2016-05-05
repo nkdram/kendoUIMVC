@@ -1,4 +1,4 @@
-# Sample MVC application with Kendo UI
+# Sample MVC application using Kendo UI
 
 Steps:
 

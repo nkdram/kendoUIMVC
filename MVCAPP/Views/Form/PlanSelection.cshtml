@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "Plan Selection";
+}
+
+
+<div class="row">
+    <section class="content">
+        <div class="col-md-10 col-lg-offset-1">
+            <div class="formSection panel">
+                <div class="panel-heading">
+                    <img src="/Content/Images/icon_home.gif" alt="homeImg" class="img-responsive pull-left" />
+                    <h3 class="panel-title"> Plan Selection</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-md-6  pull-left">
+                            <label class="col-md-4 control-label" for="ddlSelectContract">Contract #</label>
+                            <div class="col-md-8">
+                                @(
+                                     Html.Kendo().DropDownList().Name("ddlSelectContract")
+                                    .OptionLabel("-- Select One --")
+                                    .BindTo(new SelectList(
+                                            new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Selected = false, Text = "H1-1234", Value = "H1-1234"},
+                                                new SelectListItem { Selected = false, Text = "S1-1234", Value = "S1-1234"},
+                                                new SelectListItem { Selected = false, Text = "N/A", Value = "N/A"}
+                                            }, "Value", "Text", 1))
+                                )
+
+                                @*<select id="ddlSelectContract" class="form-control" name="Contract">
+                                        <option value="1">--Select One--</option>
+                                        <option value="2">H1-1234</option>
+                                        <option value="3">S1-1234</option>
+                                        <option value="4">N/A</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6  pull-left">
+                            <label class="col-md-4 control-label" for="ddlEnrollmentYear">Enrollment Year</label>
+                            <div class="col-md-4">
+                                @(
+                                     Html.Kendo().DropDownList().Name("ddlEnrollmentYear")
+                                    .OptionLabel("-- Enrollment Year --")
+                                    .BindTo(new SelectList(
+                                            new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Selected = false, Text = "2014", Value = "2014"},
+                                                new SelectListItem { Selected = false, Text = "2015", Value = "2015"},
+                                                new SelectListItem { Selected = false, Text = "2016", Value = "2016"}
+                                            }, "Value", "Text", 1))
+                                )
+                                @*<select id="ddlEnrollmentYear" class="form-control" name="ddlEnrollmentYear">
+                                        <option value="1">2014</option>
+                                        <option value="2">2015</option>
+                                        <option value="3">2016</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label class="col-md-4 control-label" for="zipCode">Zip Code</label>
+                            <div class="col-md-6">
+                                @(
+                                    Html.Kendo().TextBox()
+                                          .Name("txtZipCode")
+                                          .HtmlAttributes(new
+                                          {
+                                              placeholder = " Zip Code ",
+                                              required = "required",
+                                              type = "number"
+                                          })
+                                )
+                                @*<input id="ZipCode" name="zipCode" type="number" value="" class="form-control">*@
+                                
+                            </div>
+                            <p class="text-danger"> or </p>
+                            
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="col-md-4 control-label" for="ddlState">State</label>
+                            <div class="col-md-8">
+                                @(
+                                     Html.Kendo().DropDownList().Name("ddlState")
+                                    .OptionLabel("-- Select State  --")
+                                    .BindTo(new SelectList(
+                                            new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Selected = false, Text = "Alabama", Value = "Alabama"},
+                                                new SelectListItem { Selected = false, Text = "Alaska", Value = "Alaska"},
+                                                new SelectListItem { Selected = false, Text = "Arizona", Value = "Arizona"},
+                                                new SelectListItem { Selected = false, Text = "White", Value = "White"},
+                                                new SelectListItem { Selected = false, Text = "California", Value = "California"},
+                                                new SelectListItem { Selected = false, Text = "Illinois", Value = "Illinois"}
+                                            }, "Value", "Text", 1))
+                                )
+                                @*<select id="ddlState" class="form-control" name="State">
+                                        <option value="1">Alabama</option>
+                                        <option value="2">Alaska</option>
+                                        <option value="3">AriZona</option>
+                                        <option value="4">California</option>
+                                        <option value="5">White</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="col-md-4 control-label" for="ddlCounty">County</label>
+                            <div class="col-md-8">
+                                @(
+                                     Html.Kendo().DropDownList().Name("ddlCounty")
+                                    .OptionLabel("-- Select County  --")
+                                    .BindTo(new SelectList(
+                                            new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Selected = false, Text = "BIBB", Value = "BIBB"},
+                                                new SelectListItem { Selected = false, Text = "BLOUNT", Value = "BLOUNT"}
+                                            }, "Value", "Text", 1))
+                                )
+                                @*<select id="ddlCounty" class="form-control" name="County">
+                                        <option value="1">BIBB</option>
+                                        <option value="2">BLOUNT</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <div class="col-md-12">
+                                <label class="control-label" for="rdPlanType">Plan Type</label>
+                                @*<label class="radio-inline col-md-offset-1">*@
+                                    @(Html.Kendo().RadioButton().Name("inlineCheckbox1").Checked(true).HtmlAttributes(new { @name = "rdPlanType" })
+                                        .Label("Individual"));
+                                    @*<input type="radio" name="rdPlanType" id="inlineCheckbox1" value="Individual"> Individual*@
+                                @*</label>
+                                <label class="radio-inline">*@
+                                    @(Html.Kendo().RadioButton().Name("inlineCheckbox2").Checked(false).HtmlAttributes(new { @name = "rdPlanType" })
+                                        .Label("Group"));
+                                    @*<input type="radio" name="rdPlanType" id="inlineCheckbox2" value="Group"> Group*@
+                                @*</label>*@
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="col-md-4 control-label" for="ddlGroup">Select Group</label>
+                            <div class="col-md-8">
+                                @(
+                                     Html.Kendo().DropDownList().Name("ddlGroup")
+                                    .OptionLabel("-- Select Group  --")
+                                    .BindTo(new SelectList(
+                                            new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Selected = false, Text = "Group 1", Value = "Group 1"},
+                                                new SelectListItem { Selected = false, Text = "Group 2", Value = "Group 2"}
+                                            }, "Value", "Text", 1))
+                                )
+                                @*<select id="ddlGroup" class="form-control" name="ddlGroup">
+                                        <option value="1">Group 1</option>
+                                        <option value="2">Group 2</option>
+                                        <option value="3">Group 3</option>
+                                        <option value="4">Group 4</option>
+                                        <option value="5">Group 5</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label class="col-md-4 control-label" for="ddlBenefit">Benefits</label>
+                            <div class="col-md-8">
+                                @(
+                                     Html.Kendo().DropDownList().Name("ddlBenefit")
+                                    .OptionLabel("-- Select Benefit  --")
+                                    .BindTo(new SelectList(
+                                            new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Selected = false, Text = "Benefit 1", Value = "Benefit 1"},
+                                                new SelectListItem { Selected = false, Text = "Benefit 2", Value = "Benefit 2"}
+                                            }, "Value", "Text", 1))
+                                )
+                                @*<select id="ddlBenefit" class="form-control" name="ddlBenefit">
+                                        <option value="1">Benefit 1</option>
+                                        <option value="2">Benefit 2</option>
+                                        <option value="3">Benefit 3</option>
+                                        <option value="4">Benefit 4</option>
+                                        <option value="5">Benefit 5</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
